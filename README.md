@@ -1,6 +1,11 @@
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-5">
         <h1 class="text-3xl font-bold mb-4">Blog Application</h1>
+          <video width="560" height="315" controls>
+                <source src="" type="video/mp4">
+                <source src="" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
         <h2 class="text-2xl font-semibold mt-6 mb-2">Description</h2>
         <p>
             The Blog Application is a simple yet powerful tool for managing blog posts. Built with Laravel, it allows users to add, edit, delete, and view blog posts. Users can also search for specific blogs using keywords.
