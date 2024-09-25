@@ -1,11 +1,7 @@
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-5">
         <h1 class="text-3xl font-bold mb-4">Blog Application</h1>
-          <video width="560" height="315" controls>
-                <source src="https://github.com/GowthamSelvaraj123/blog-app/blob/007676cc3a7dd6133290bf4f2046a7539e4bc8d0/blog_editor.mp4" type="video/mp4">
-                <source src="https://github.com/GowthamSelvaraj123/blog-app/blob/007676cc3a7dd6133290bf4f2046a7539e4bc8d0/blog_editor.mp4" type="video/ogg">
-                Your browser does not support the video tag.
-            </video>
+  <iframe width="560" height="315" src="[https://www.youtube.com/embed/YOUR_VIDEO_ID](https://www.youtube.com/watch?v=Ahp840_aCoI)" frameborder="0" allowfullscreen></iframe>
         <h2 class="text-2xl font-semibold mt-6 mb-2">Description</h2>
         <p>
             The Blog Application is a simple yet powerful tool for managing blog posts. Built with Laravel, it allows users to add, edit, delete, and view blog posts. Users can also search for specific blogs using keywords.
