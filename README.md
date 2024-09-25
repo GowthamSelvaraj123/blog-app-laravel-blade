@@ -2,8 +2,8 @@
     <div class="container mx-auto p-5">
         <h1 class="text-3xl font-bold mb-4">Blog Application</h1>
           <video width="560" height="315" controls>
-                <source src="" type="video/mp4">
-                <source src="" type="video/ogg">
+                <source src="https://github.com/GowthamSelvaraj123/blog-app/blob/007676cc3a7dd6133290bf4f2046a7539e4bc8d0/blog_editor.mp4" type="video/mp4">
+                <source src="https://github.com/GowthamSelvaraj123/blog-app/blob/007676cc3a7dd6133290bf4f2046a7539e4bc8d0/blog_editor.mp4" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
         <h2 class="text-2xl font-semibold mt-6 mb-2">Description</h2>
