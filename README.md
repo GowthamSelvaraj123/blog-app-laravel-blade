@@ -1,7 +1,6 @@
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-5">
         <h1 class="text-3xl font-bold mb-4">Blog Application</h1><div class="mb-4">
-  <iframe width="560" height="315" src="[https://www.youtube.com/embed/YOUR_VIDEO_ID](https://www.youtube.com/watch?v=Ahp840_aCoI)" frameborder="0" allowfullscreen></iframe></div>
         <h2 class="text-2xl font-semibold mt-6 mb-2">Description</h2>
         <p>
             The Blog Application is a simple yet powerful tool for managing blog posts. Built with Laravel, it allows users to add, edit, delete, and view blog posts. Users can also search for specific blogs using keywords.
