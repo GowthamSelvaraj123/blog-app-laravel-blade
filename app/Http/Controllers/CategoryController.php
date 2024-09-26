@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -11,7 +13,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+        $categorys = Category::all();
+        return view('category.index', compact('categorys'));
     }
 
     /**
@@ -19,7 +25,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+        return view('category.create');
+        
     }
 
     /**
@@ -27,7 +37,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+        Category::create([
+            'title' => $request->input('title'),
+        ]);
+        return redirect()->route('categorys.index')->with('success', 'Blog added successfully.');
     }
 
     /**
@@ -43,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -51,7 +72,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+        $category = Category::findOrFail($id);
+        $category->update([
+            'title' => $request->input('title')
+        ]);
+        return redirect()->route('categorys.index')->with('success', 'Blog added successfully.');
     }
 
     /**
@@ -59,6 +91,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categorys.index')->with('success', 'Blog deleted successfully!');
     }
 }

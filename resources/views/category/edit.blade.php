@@ -15,35 +15,14 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <form action="{{ route('blogs.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('categorys.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!-- Blog Title -->
                         <div class="mb-4">
                             <label for="title" class="block text-sm font-medium text-gray-700">Blog Title</label>
                             <input type="text" name="title" id="title" placeholder="Enter blog title"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('title', $blog->title) }}">
-                        </div>
-
-                        <!-- Blog Description -->
-                        <div class="mb-4">
-                            <label for="description" class="block text-sm font-medium text-gray-700">Blog Description</label>
-                            <textarea name="description" id="description" rows="4" placeholder="Enter blog description"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description', $blog->description) }}</textarea>
-                        </div>
-
-                        <!-- Author Name -->
-                        <div class="mb-4">
-                            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
-                            <input type="text" name="author" id="author" placeholder="Author name"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('description', $blog->author) }}">
-                        </div>
-
-                        <!-- File Upload -->
-                        <div class="mb-4">
-                            <label for="image" class="block text-sm font-medium text-gray-700">Upload Image</label>
-                            <input type="file" name="image" id="image"
-                                class="mt-1 block w-full text-gray-900 px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value="{{ old('title', $category->title) }}">
                         </div>
                         <!-- Submit Button -->
                         <div class="mt-6">

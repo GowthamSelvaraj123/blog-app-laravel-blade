@@ -13,6 +13,7 @@ class Blog extends Model
         'title',
         'description',
         'author', 
-        'image'
+        'image', 
+        'category'
     ];
 }

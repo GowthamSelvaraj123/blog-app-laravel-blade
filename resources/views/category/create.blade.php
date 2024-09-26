@@ -15,41 +15,19 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <form action="{{route('blogs.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('categorys.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Blog Title -->
                         <div class="mb-4">
-                            <label for="title" class="block text-sm font-medium text-gray-700">Blog Title</label>
+                            <label for="title" class="block text-sm font-medium text-gray-700">Category</label>
                             <input type="text" name="title" id="title" placeholder="Enter blog title"
                                 class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
-
-                        <!-- Blog Description -->
-                        <div class="mb-4">
-                            <label for="description" class="block text-sm font-medium text-gray-700">Blog Description</label>
-                            <textarea name="description" id="description" rows="4" placeholder="Enter blog description"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-                        </div>
-
-                        <!-- Author Name -->
-                        <div class="mb-4">
-                            <label for="author" class="block text-sm font-medium text-gray-700">Author</label>
-                            <input type="text" name="author" id="author" placeholder="Author name"
-                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-
-                        <!-- File Upload -->
-                        <div class="mb-4">
-                            <label for="image" class="block text-sm font-medium text-gray-700">Upload Image</label>
-                            <input type="file" name="image" id="image"
-                                class="mt-1 block w-full text-gray-900 px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        </div>
-
                         <!-- Submit Button -->
                         <div class="mt-6">
                             <button type="submit"
                                 class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Submit Blog
+                                Submit Category
                             </button>
                         </div>
                     </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -9,10 +10,6 @@ use Illuminate\Routing\Controller;
 
 class BlogController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['show']);
-    }
     public function search(Request $request)
     {
         $search = $request->input('search');
@@ -53,7 +50,8 @@ class BlogController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
-        return view('blogs.create');
+        $categories = Category::all();
+        return view('blogs.create', compact('categories'));
     }
 
     /**
@@ -61,7 +59,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
@@ -71,6 +68,7 @@ class BlogController extends Controller
             'description' => 'required|string|max:1000',
             'author' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|exists:categories,id',
         ]);
         $imagePath = 'default-image-path.jpg';
                 $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -82,6 +80,7 @@ class BlogController extends Controller
             'description' => $request->input('description'),
             'author' => $request->input('author'),
             'image' => $imagePath,
+            'category' => $request->input('category'),
         ]);
         return redirect()->route('blogs.index')->with('success', 'Blog added successfully.');
     }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Blog List') }}
+            {{ __('Category List') }}
         </h2>
     </x-slot>
     <div class="py-12 bg-gray-100 min-h-screen">
@@ -13,59 +13,37 @@
                         {{ session('success') }}
                     </div>
                     @endif
-
-                    <form action="{{ route('blogs.search') }}" method="GET" class="mb-5 flex items-center space-x-2 bg-gray-100 p-2 rounded-md shadow-md">
-                        <input type="text" name="search" placeholder="Search Blogs"
-                            class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                            required>
-                        <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">Search</button>
-                    </form>
                     <div class="mb-6">
-                        <a href="{{ route('blogs.create') }}"
+                        <a href="{{ route('categorys.create') }}"
                             class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                            Create Blog
+                            Create Categories
                         </a>
                     </div>
-                    @if($blogs->isEmpty())
-                    <div class="text-center">
-                        <h1>No Blog</h1>
-                    </div>
-                    @else
-
-                    @foreach($blogs->sortByDesc('created_at') as $blog)
-                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                        <h1 class="text-2xl font-bold mb-2 text-indigo-700">{{ $blog->title }}</h1>
-                        @if($blog->image)
-                        <img src="{{ asset($blog->image) }}" alt="Blog Image" class="rounded-md mt-3 mb-4" width="200px" height="120px">
-                        @endif
-                        <p class="text-gray-700 mb-4">{{ $blog->description }}</p>
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>By {{ $blog->author }}</span>
-                            <span>{{ $blog->created_at->format('M d, Y') }}</span>
-                        </div>
-                        <div class="flex">
-                            <a href="{{ route('blogs.edit', $blog->id) }}"
-                                class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                Edit
-                            </a>
-                            <a href="{{ route('blogs.show', $blog->id) }}"
-                                class="ms-4 mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                Show
-                            </a>
-                            <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this blog?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="ms-4 mt-4 inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                    Delete Blog
-                                </button>
-                            </form>
+                    <div class="container mx-auto p-6">
+                        <h2 class="text-2xl font-semibold mb-4 text-gray-800">List of Categories</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            @foreach($categorys as $category)
+                            <div class="bg-white p-6 rounded-lg shadow-md mb-6 transition-transform transform hover:scale-105">
+                                <h1 class="text-xl font-bold mb-2 text-indigo-700">{{ $category->title }}</h1>
+                                <div class="flex justify-between items-center mt-4">
+                                    <div class="flex">
+                                        <a href="{{ route('categorys.edit', $category->id) }}"
+                                            class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200">
+                                            Edit
+                                        </a>
+                                        <form action="{{ route('categorys.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');" class="ms-4">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors duration-200">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    @endforeach
-                    <div>
-                        {{ $blogs->links() }}
-                    </div>
-                    @endif
                     <div class="mt-6">
                     </div>
                 </div>
