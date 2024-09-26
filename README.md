@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold mb-4">Blog Application</h1><div class="mb-4">
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Description</h2>
+        <p>
+            The Blog Application is a simple yet powerful tool for managing blog posts. Built with Laravel, it allows users to add, edit, delete, and view blog posts. Users can also search for specific blogs using keywords.
+        </p>
+        <h2>Blog list</h2>
+            <img src="https://github.com/user-attachments/assets/ad928557-7815-4953-b5fa-fe9af8318f94" />
+        <h2>Blog User Login<h2>
+            <img src="https://github.com/user-attachments/assets/02be508f-03b5-4a7f-bcfc-7db0ff05e666">
+        <h2>Blog User Register<h2>
+            <img src="https://github.com/user-attachments/assets/80a240a6-1c13-4962-8e8d-18932ad59123">
+        <h2>Blog Create, Edit, Delete and Show list<h2>
+            <img src="https://github.com/user-attachments/assets/2704f4d8-e852-4c4e-b1bc-d657f8c7309f">
+        <h2>Blog Create and Update</h2>
+            <img src="https://github.com/user-attachments/assets/00500db2-e916-47fa-9fb6-9078bbd8cdbf">
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Features</h2>
+        <ul class="list-disc list-inside mb-4">
+            <li><strong>Add Blog:</strong> Create new blog posts with a title, description, image, and author name.</li>
+            <li><strong>Edit Blog:</strong> Modify existing blog posts.</li>
+            <li><strong>Delete Blog:</strong> Remove blog posts from the application.</li>
+            <li><strong>Show Blog:</strong> View individual blog details.</li>
+            <li><strong>Search Blogs:</strong> Find blogs by title or content.</li>
+        </ul>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Fields</h2>
+        <p>
+            Each blog post contains the following fields:
+        </p>
+        <ul class="list-disc list-inside mb-4">
+            <li><strong>Title:</strong> The title of the blog post.</li>
+            <li><strong>Description:</strong> A brief overview of the blog content.</li>
+            <li><strong>Image:</strong> An optional image associated with the blog post.</li>
+            <li><strong>Author Name:</strong> The name of the person who wrote the blog.</li>
+        </ul>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Technologies Used</h2>
+        <ul class="list-disc list-inside mb-4">
+            <li><strong>Backend:</strong> Laravel</li>
+            <li><strong>Frontend:</strong> Blade Templates, Tailwind CSS</li>
+            <li><strong>Database:</strong> MySQL</li>
+        </ul>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Installation</h2>
+        <ol class="list-decimal list-inside mb-4">
+            <li><strong>Clone the Repository</strong>
+                <pre class="bg-gray-200 p-2 rounded">git clone https://github.com/GowthamSelvaraj123/blog-app.git</pre>
+            </li>
+            <li><strong>Navigate to the Project Directory</strong>
+                <pre class="bg-gray-200 p-2 rounded">cd blog-app</pre>
+            </li>
+            <li><strong>Install Dependencies</strong>
+                <pre class="bg-gray-200 p-2 rounded">composer install</pre>
+            </li>
+            <li><strong>Set Up Environment Variables</strong>
+                <p>Copy the <code>.env.example</code> to <code>.env</code> and update the database credentials.</p>
+                <pre class="bg-gray-200 p-2 rounded">cp .env.example .env</pre>
+            </li>
+            <li><strong>Generate Application Key</strong>
+                <pre class="bg-gray-200 p-2 rounded">php artisan key:generate</pre>
+            </li>
+            <li><strong>Run Migrations</strong>
+                <pre class="bg-gray-200 p-2 rounded">php artisan migrate</pre>
+            </li>
+            <li><strong>Serve the Application</strong>
+                <pre class="bg-gray-200 p-2 rounded">php artisan serve</pre>
+            </li>
+        </ol>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Usage</h2>
+        <p>
+            Navigate to <code>http://localhost:8000</code> to access the blog application. Use the navigation menu to add, edit, or delete blogs. Use the search bar to find specific blogs by title or content.
+        </p>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">Contributing</h2>
+        <p>
+            Contributions are welcome! Please open an issue or submit a pull request for any improvements.
+        </p>
+        <h2 class="text-2xl font-semibold mt-6 mb-2">License</h2>
+        <p>
+            This project is open source and available under the <a href="LICENSE" class="text-blue-500 underline">MIT License</a>.
+        </p>
+    </div>
+</body>
