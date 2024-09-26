@@ -14,9 +14,12 @@ Route::get('/dashboard', function () {
     return redirect()->route('blogs.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('blogs', BlogController::class);
-Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
+Route::get('blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show');
+Route::middleware('auth')->group(function () {
+    Route::resource('blogs', BlogController::class)->except(['show']);
+});
 
+Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

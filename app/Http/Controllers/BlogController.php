@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Controller;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show']);
+    }
     public function search(Request $request)
     {
         $search = $request->input('search');
@@ -24,8 +30,14 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all()->sortBy('created_at');
-        return view('blogs.index', compact('blogs'));
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
+        $blogs = Blog::orderBy('created_at')->paginate(2);
+        return view('blogs.index', [
+            'blogs' => $blogs
+        ]);
+        //return view('blogs.index', compact('blogs'));
     }
     public function welcome()
     {
@@ -38,6 +50,9 @@ class BlogController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
         return view('blogs.create');
     }
 
@@ -46,6 +61,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+        if (!Auth::check()) {
+            return redirect()->route('login'); 
+        }
 
         $request->validate([
             'title' => 'required|string|max:255',
