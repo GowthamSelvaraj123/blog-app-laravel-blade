@@ -5,6 +5,8 @@
         <p>
             The Blog Application is a simple yet powerful tool for managing blog posts. Built with Laravel, it allows users to add, edit, delete, and view blog posts. Users can also search for specific blogs using keywords.
         </p>
+        <h2>Dashboard</h2>
+            <img src="https://github.com/user-attachments/assets/1647fb4e-c30a-4290-b756-6277d021767f">
         <h2>Blog list</h2>
             <img src="https://github.com/user-attachments/assets/ad928557-7815-4953-b5fa-fe9af8318f94" />
         <h2>Blog User Login<h2>
