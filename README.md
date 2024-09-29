@@ -15,6 +15,10 @@
             <img src="https://github.com/user-attachments/assets/2704f4d8-e852-4c4e-b1bc-d657f8c7309f">
         <h2>Blog Create and Update</h2>
             <img src="https://github.com/user-attachments/assets/00500db2-e916-47fa-9fb6-9078bbd8cdbf">
+        <h2>Pagination</h2>
+            <img src="https://github.com/user-attachments/assets/6f20d6ba-b37b-41ae-9f08-337f9aea8684">
+        <h2>Category Management</h2>
+            <img src="https://github.com/user-attachments/assets/583e2a89-dbb7-4667-833a-45ed09544204">
         <h2 class="text-2xl font-semibold mt-6 mb-2">Features</h2>
         <ul class="list-disc list-inside mb-4">
             <li><strong>Add Blog:</strong> Create new blog posts with a title, description, image, and author name.</li>
