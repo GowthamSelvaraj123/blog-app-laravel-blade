@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
 
+
 class BlogController extends Controller
 {
     public function search(Request $request)
@@ -30,11 +31,10 @@ class BlogController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
-        $blogs = Blog::orderBy('created_at')->paginate(2);
+        $blogs = Blog::with('categorys')->orderBy('created_at')->paginate(2);
         return view('blogs.index', [
             'blogs' => $blogs
         ]);
-        //return view('blogs.index', compact('blogs'));
     }
     public function welcome()
     {
@@ -59,6 +59,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request->all());
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
@@ -68,14 +70,14 @@ class BlogController extends Controller
             'description' => 'required|string|max:1000',
             'author' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|exists:categories,id',
+            'category' => 'required|string|max:255', 
         ]);
         $imagePath = 'default-image-path.jpg';
                 $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path('images'), $imageName);
             $imagePath = 'images/' . $imageName;
         ///dd($imagePath);
-        Blog::create([
+        $blog = Blog::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'author' => $request->input('author'),

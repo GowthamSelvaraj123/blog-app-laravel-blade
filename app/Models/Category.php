@@ -12,4 +12,8 @@ class Category extends Model
     protected $fillable = [
         'title',
     ];
+    public function blogs()
+{
+    return $this->hasMany(Blog::class);
+}
 }
