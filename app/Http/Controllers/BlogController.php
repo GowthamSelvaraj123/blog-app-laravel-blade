@@ -31,7 +31,7 @@ class BlogController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
-        $blogs = Blog::with('categorys')->orderBy('created_at')->paginate(2);
+        $blogs = Blog::with('categories')->orderBy('created_at')->paginate(4);
         return view('blogs.index', [
             'blogs' => $blogs
         ]);
@@ -41,7 +41,6 @@ class BlogController extends Controller
         $blogs = Blog::all();
         return view('welcome', compact('blogs'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -82,7 +81,7 @@ class BlogController extends Controller
             'description' => $request->input('description'),
             'author' => $request->input('author'),
             'image' => $imagePath,
-            'category' => $request->input('category'),
+            'category_id' => $request->input('category'),
         ]);
         return redirect()->route('blogs.index')->with('success', 'Blog added successfully.');
     }
@@ -115,6 +114,7 @@ class BlogController extends Controller
             'description' => 'required|string|max:1000',
             'author' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|string|max:255', 
         ]);
         $imagePath = 'default-image-path.jpg';
         $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -126,6 +126,7 @@ class BlogController extends Controller
             'description' => $request->input('description'),
             'author' => $request->input('author'),
             'image' => $imagePath,
+            'category_id' => $request->input('category'),
         ]);
         return redirect()->route('blogs.index')->with('success', 'Blog added successfully.');
     }

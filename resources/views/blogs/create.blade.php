@@ -39,15 +39,15 @@
                         </div>
 
                         <div class="mb-4">
-    <label for="category" class="block text-sm font-medium text-gray-700">Select Category</label>
-    <select name="category" id="category" 
-        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-        <option value="" disabled selected>Select a Category</option>
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->title }}</option>
-        @endforeach
-    </select>
-</div>
+                            <label for="category" class="block text-sm font-medium text-gray-700">Select Category</label>
+                            <select name="category" id="category"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                <option value="" disabled selected>Select a Category</option>
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <!-- File Upload -->
                         <div class="mb-4">
                             <label for="image" class="block text-sm font-medium text-gray-700">Upload Image</label>

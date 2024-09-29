@@ -15,7 +15,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <form action="{{route('categorys.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('categories.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Blog Title -->
                         <div class="mb-4">

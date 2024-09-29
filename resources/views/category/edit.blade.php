@@ -15,7 +15,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    <form action="{{ route('categorys.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!-- Blog Title -->

@@ -16,8 +16,8 @@ class CategoryController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login'); 
         }
-        $categorys = Category::all();
-        return view('category.index', compact('categorys'));
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -47,7 +47,7 @@ class CategoryController extends Controller
         Category::create([
             'title' => $request->input('title'),
         ]);
-        return redirect()->route('categorys.index')->with('success', 'Blog added successfully.');
+        return redirect()->route('categories.index')->with('success', 'Blog added successfully.');
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         $category->update([
             'title' => $request->input('title')
         ]);
-        return redirect()->route('categorys.index')->with('success', 'Blog added successfully.');
+        return redirect()->route('categories.index')->with('success', 'Blog added successfully.');
     }
 
     /**
@@ -93,6 +93,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('categorys.index')->with('success', 'Blog deleted successfully!');
+        return redirect()->route('categories.index')->with('success', 'Blog deleted successfully!');
     }
 }

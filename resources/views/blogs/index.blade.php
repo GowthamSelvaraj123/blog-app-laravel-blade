@@ -39,11 +39,11 @@
                         <img src="{{ asset($blog->image) }}" alt="Blog Image" class="rounded-md mt-3 mb-4" width="200px" height="120px">
                         @endif
                         <p class="text-gray-700 mb-4">{{ $blog->description }}</p>
+                        <div class="category mb-4"><h6><strong>Category:</strong> {{ $blog->categories ? $blog->categories->title : 'Uncategorized' }}</h6></div>
                         <div class="flex justify-between items-center text-sm text-gray-500">
                             <span>By {{ $blog->author }}</span>
                             <span>{{ $blog->created_at->format('M d, Y') }}</span>
                         </div>
-                        <div class="category"><h6>{{ $blog->categorys ? $blog->categorys->title : 'Uncategorized' }}</h6></div>
                         <div class="flex">
                             <a href="{{ route('blogs.edit', $blog->id) }}"
                                 class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

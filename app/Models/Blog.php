@@ -14,10 +14,10 @@ class Blog extends Model
         'description',
         'author', 
         'image', 
-        'category'
+        'category_id'
     ];
-    public function categorys()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

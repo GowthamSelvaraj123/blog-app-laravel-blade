@@ -4,6 +4,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,13 +13,11 @@ Route::get('/', function () {
 
 Route::get('/', [BlogController::class, 'welcome'])->name('welcome');
 
-Route::get('/dashboard', function () {
-    return redirect()->route('blogs.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('blogs', BlogController::class);
-    Route::resource('categorys', CategoryController::class);
+    Route::resource('categories', CategoryController::class);
 });
 
 Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
