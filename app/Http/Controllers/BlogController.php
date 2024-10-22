@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 
 class BlogController extends Controller
@@ -17,8 +19,8 @@ class BlogController extends Controller
     
         // Assuming you're searching by the 'title' field, you can change this as needed
         $results = Blog::where('title', 'like', "%$search%")
-                    ->orWhere('description', 'like', "%$search%")
-                    ->get();
+        ->orWhere('description', 'like', "%$search%")
+        ->paginate(10); // Change the number to your desired items per page
     
         // Return the results to the view
         return view('blogs.index', ['blogs' => $results]);
@@ -140,5 +142,73 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $blog->delete();
         return redirect()->route('blogs.index')->with('success', 'Blog deleted successfully!');
+    }
+    public function import(Request $request)
+    {
+        $request->validate([
+            'blogs_file' => 'required|file|mimes:csv,txt',
+        ]);
+    
+        $path = $request->file('blogs_file')->store('uploads');
+        Log::info('Uploaded file path: ' . $path);
+        
+        if (!Storage::exists($path)) {
+            Log::error('File not found: ' . $path);
+            return redirect()->back()->with('error', 'File not found.');
+        }
+        
+        $fileContent = Storage::get($path);
+        $rows = explode(PHP_EOL, $fileContent);
+        $blogs = [];
+    
+        foreach ($rows as $key => $row) {
+            if (empty(trim($row))) {
+                continue;
+            }
+            
+            $data = str_getcsv($row);
+            
+            if (count($data) < 5) {
+                Log::warning('Skipping row due to insufficient data: ' . $row);
+                continue; // Skip rows that don't have enough data
+            }
+    
+            // Extract data
+            $title = trim($data[0], '" ');
+            $description = trim($data[1], '" ');
+            $author = trim($data[2], '" ');
+            $image = trim($data[3], '" ');
+            $categoryTitle = trim($data[4], '" ');
+    
+            // Check if the category already exists or create a new one
+            $existingCategory = Category::where('title', $categoryTitle)->first();
+    
+            if (!$existingCategory) {
+                // Create a new category if it doesn't exist
+                $existingCategory = Category::create(['title' => $categoryTitle]);
+                Log::info('Created new category: ' . $categoryTitle);
+            }
+    
+            // Prepare blog data for insertion
+            $blogs[] = [
+                'title' => $title,
+                'description' => $description,
+                'author' => $author,
+                'image' => $image,
+                'category_id' => $existingCategory->id, // Use the ID of the existing or newly created category
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        }
+    
+        // Insert new blogs in bulk if any
+        if (!empty($blogs)) {
+            Blog::insert($blogs);
+            Log::info('Inserted blogs: ' . count($blogs));
+            Storage::delete($path); // Optionally delete the uploaded file
+            return redirect()->back()->with('success', 'Blogs imported successfully.');
+        }
+    
+        return redirect()->back()->with('error', 'No blogs to import.');
     }
 }

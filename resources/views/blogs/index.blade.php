@@ -22,11 +22,31 @@
                         <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">Search</button>
                     </form>
 
-                    <div class="mb-6">
+                    <div class="mb-6 flex justify-between items-center">
                         <a href="{{ route('blogs.create') }}"
                             class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                             Create Blog
                         </a>
+                        <form action="{{ route('blogs.import') }}" method="POST" enctype="multipart/form-data" class="flex items-center ml-4">
+                            @csrf
+                            <label class="flex items-center border border-gray-300 rounded-md px-4 py-2 bg-white text-gray-700 hover:bg-gray-50 transition duration-200 cursor-pointer">
+                                <input type="file" name="blogs_file" accept=".csv" required class="hidden" onchange="updateFileName(this)">
+                                <span class="mr-2" id="file-name">Choose a CSV file</span>
+                                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11.293 9.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L13.586 15H3a1 1 0 110-2h10.586l-2.293-2.293a1 1 0 010-1.414z" />
+                                </svg>
+                            </label>
+                            <button type="submit" class="ml-4 px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-white text-sm uppercase tracking-widest hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200">
+                                Import Blogs
+                            </button>
+                        </form>
+                        <script>
+                            function updateFileName(input) {
+                                const fileName = input.files[0] ? input.files[0].name : 'Choose a CSV file';
+                                document.getElementById('file-name').textContent = fileName;
+                            }
+                        </script>
+
                     </div>
 
                     @if($blogs->isEmpty())
