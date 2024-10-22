@@ -39,7 +39,8 @@ class BlogController extends Controller
     public function welcome()
     {
         $blogs = Blog::all();
-        return view('welcome', compact('blogs'));
+        $categories = Category::all();
+        return view('welcome', compact('blogs', 'categories'));
     }
     /**
      * Show the form for creating a new resource.

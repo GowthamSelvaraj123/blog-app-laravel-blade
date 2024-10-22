@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/search', [BlogController::class, 'search'])->name('blogs.search');
+Route::post('/categories/import', [CategoryController::class, 'import'])->name('categories.import');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
